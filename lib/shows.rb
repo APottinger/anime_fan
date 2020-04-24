@@ -1,0 +1,8 @@
+class AnimeFan::Shows
+    
+
+
+
+end
+
+
