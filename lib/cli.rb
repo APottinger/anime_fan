@@ -16,37 +16,29 @@ class AnimeFan::CLI
         puts ""
     end
 
+    def action
+        puts ""
+        puts "Enter list to see shows."
+        input = gets.strip
+        list if input == "list"  
+    end
+
 
     def start
-        list 
-        input = nil
-        while input != "exit"
-            puts ""
-            puts "What new show would you like to watch?"
-            puts ""
-            input = gets.strip
-            if input 
-                AnimeFan::Scraper.find_by_title(input)
-            end
-            
-            puts "Enter list to see shows again."
-            puts "Enter exit to end the program."
-            puts ""
-            input = gets.strip
-            if input == "list"
-                list 
-            elsif 
+        action
+        puts ""
+        puts "Enter exit to end the program."
+        puts ""
+        bye
+    end
 
-                AnimeFan::Scraper.find_by_title(input)
-
-            end 
-        end
-
-
+    def bye 
         puts "See you soon!"
+    end
 
 
-    end 
+
+  
 
 end
 

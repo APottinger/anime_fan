@@ -49,6 +49,7 @@ class AnimeFan::Scraper
                 @@animes << anime
                 puts "Added #{anime[:title]}"
                 puts ""
+                anime 
             end
 
             page += 1
@@ -72,6 +73,7 @@ class AnimeFan::Scraper
           anime[:title].downcase.strip == title.downcase.strip ||
           anime[:title].split("(").first.strip.downcase == title.downcase.strip
         end
+        anime 
       end
 
         
