@@ -1,5 +1,5 @@
 require_relative "./anime_fan/version"
-require_relative "./concerns/findable"
+require_relative "../lib/concerns/findable"
 require 'nokogiri'
 require 'open-uri'
 require 'pry'

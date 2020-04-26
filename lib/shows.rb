@@ -1,5 +1,5 @@
 require_relative "./anime_fan"
-require_relative "../concerns/findable"
+require_relative "../lib/concerns/findable"
 
 class AnimeFan::Shows 
     extend Concerns::Findable
