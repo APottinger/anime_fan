@@ -51,7 +51,10 @@ class AnimeFan::Scraper
     end
  
     def self.list
-        print p_doc.css("p.name").text
+        url = "https://www18.gogoanime.io/"
+        html = open("https://www18.gogoanime.io/") 
+        doc = Nokogiri::HTML(html)
+        print doc.css("p.name").text
     end 
 
     def self.find_by_title(title)
