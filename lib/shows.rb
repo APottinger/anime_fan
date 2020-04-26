@@ -1,5 +1,5 @@
-require_relative "./concerns"
 require_relative "./anime_fan"
+require_relative "../concerns/findable"
 
 class AnimeFan::Shows 
     extend Concerns::Findable
@@ -13,7 +13,7 @@ class AnimeFan::Shows
         @@all
     end 
 
-    attr_accessor :title, :genre
+    attr_accessor :title
 
 
     def add_show(title)

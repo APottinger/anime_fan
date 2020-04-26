@@ -1,8 +1,8 @@
 # AnimeFan
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/anime_fan`. To experiment with that code, run `bin/console` for an interactive prompt.
+AnimeFan ruby gem for Ruby.
 
-TODO: Delete this and the text above, and describe your gem
+This gem utilizes strong OOP principles to deliver the newest releases of anime from webpage and returns values consistent with user input via command line interface.
 
 ## Installation
 
@@ -22,7 +22,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+require 'anime_fan'
+
+anime_fan.title # returns 'title'
+anime_fan.episode # returns 'episode'
+anime_fan.animes #returns 'all recent anime'
+
 
 ## Development
 
@@ -32,7 +37,19 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/anime_fan.
+Bug reports and pull requests are welcome on GitHub at https://github.com/APottinger/anime_fan.
+
+Step 1
+Option 1
+🍴 Fork this repo!
+Option 2
+👯 Clone this repo to your local machine using https://github.com/joanaz/HireDot2.git
+
+Step 2
+HACK AWAY! 🔨🔨🔨
+
+Step 3
+🔃 Create a new pull request using https://github.com/joanaz/HireDot2/compare/.
 
 
 ## License
