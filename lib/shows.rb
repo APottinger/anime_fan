@@ -1,4 +1,6 @@
+require_relative "./concerns"
 require_relative "./anime_fan"
+
 class AnimeFan::Shows 
     extend Concerns::Findable
     include Concerns::Savable

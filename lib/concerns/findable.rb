@@ -9,8 +9,9 @@ module Concerns
         def save
           self.class.all << self
         end
+    end
     
-      end
+ 
     
 
     module Findable
@@ -18,6 +19,7 @@ module Concerns
       def find_by_title(title)
         self.all.find{|instance| instance.title == title}
       end
+
       def create(title)
         new_instance = self.new(title)
         new_instance.save
@@ -25,10 +27,10 @@ module Concerns
       end
   
       def find_or_create_by_title(title)
-        self.find_by_title(title) 
-        else
-        self.create(title)
+        anime = find_by_title(title)
+        anime.nil? ? create(title)
       end
+
   
       def destroy_all
         self.all.clear

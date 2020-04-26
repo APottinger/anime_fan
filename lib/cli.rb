@@ -29,6 +29,7 @@ class AnimeFan::CLI
             if input == "list"
                 list 
             elsif 
+                
                 AnimeFan::Scraper.find_by_title(title)
 
             end 
@@ -37,7 +38,7 @@ class AnimeFan::CLI
 
         puts "See you soon!"
 
-        
+
     end 
 
 end
