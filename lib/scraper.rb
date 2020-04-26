@@ -8,11 +8,17 @@ class AnimeFan::Scraper
     url = "https://www18.gogoanime.io/"
     html = open("https://www18.gogoanime.io/") 
     doc = Nokogiri::HTML(html)
-    animes = []
+    
+    def self.all
+        @@animes
+    end
+
+    @@animes = Array.new
 
     def self.scrape_web
-        per_page = animes.count
+        
         #create a pagination for the data scraped
+
 
 
         
@@ -40,7 +46,7 @@ class AnimeFan::Scraper
                 }
         
            
-                animes << anime
+                @@animes << anime
                 puts "Added #{anime[:title]}"
                 puts ""
             end
@@ -58,7 +64,11 @@ class AnimeFan::Scraper
     end 
 
     def self.find_by_title(title)
-        self.animes.detect do |title|
+        p_url = "https://www18.gogoanime.io"
+        p_html = open(p_url)
+        p_doc = Nokogiri::HTML(p_html)
+        title = p_doc.css("p.name").text
+        self.all.detect do |title|
           anime[:title].downcase.strip == title.downcase.strip ||
           anime[:title].split("(").first.strip.downcase == title.downcase.strip
         end
@@ -66,11 +76,12 @@ class AnimeFan::Scraper
 
         
 
+
        
 
 
    
 end
-
+ 
 
     

@@ -13,7 +13,9 @@ class AnimeFan::CLI
         puts ""
         AnimeFan::Scraper.list
         #pulls 20 newest recent releases
+        puts ""
     end
+
 
     def start
         list 
@@ -22,6 +24,11 @@ class AnimeFan::CLI
             puts ""
             puts "What new show would you like to watch?"
             puts ""
+            input = gets.strip
+            if input 
+                AnimeFan::Scraper.find_by_title(input)
+            end
+            
             puts "Enter list to see shows again."
             puts "Enter exit to end the program."
             puts ""
@@ -29,8 +36,8 @@ class AnimeFan::CLI
             if input == "list"
                 list 
             elsif 
-                
-                AnimeFan::Scraper.find_by_title(title)
+
+                AnimeFan::Scraper.find_by_title(input)
 
             end 
         end
