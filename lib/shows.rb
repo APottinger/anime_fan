@@ -1,19 +1,19 @@
 require_relative "./anime_fan"
 require_relative "../lib/concerns/findable"
 
-class AnimeFan::Shows 
+class AnimeFan::Show 
     extend Concerns::Findable
     include Concerns::Savable
 
     #class that holds and manages data about my favorite shows
 
-    @@all = []
+    @@animes = []
 
     def self.all 
-        @@all
+        @@animes
     end 
 
-    attr_accessor :title
+    attr_accessor :title, :episode, :url 
 
 
     def add_show(title)
@@ -21,9 +21,12 @@ class AnimeFan::Shows
         save
     end
 
-    def initialize(name)
-        super(name)
-        @title = title
+    def create_by_title(ti)
+
+    end
+
+    def initialize(title, episode, url)
+        @title, @episode, @url = title, episode, url 
         save 
     end
 
