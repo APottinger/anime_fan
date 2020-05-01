@@ -12,8 +12,6 @@ module Concerns
 
     end
     
- 
-    
 
     module Findable
        

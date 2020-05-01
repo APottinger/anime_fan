@@ -13,7 +13,7 @@ class AnimeFan::Show
         @@animes
     end 
 
-    attr_accessor :title, :episode, :url 
+    attr_accessor :title, :episode, :url, :description
 
 
     def add_show(title)

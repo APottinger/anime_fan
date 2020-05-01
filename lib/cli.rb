@@ -1,9 +1,34 @@
 require_relative "./anime_fan"
+require 'pry'
 
 class AnimeFan::CLI  
     
     def call 
         start
+    end
+
+    def start
+        action
+        sleep(1)
+        choose_anime
+        bye 
+    end
+
+    def action
+        puts ""
+        puts "Welcome to the recent releases Anime Hub!"
+        puts ""
+        puts "One second while we grab your info..."
+        sleep(1)
+        puts ""
+        puts ""
+        puts ""
+        AnimeFan::Scraper.scrape_web
+        loop do
+            puts "Enter 'list' to see shows:"
+            input = gets.strip
+            break if input == "list"  
+        end 
     end
 
     def list
@@ -14,36 +39,46 @@ class AnimeFan::CLI
         AnimeFan::Show.all.each.with_index do |s, i|
             puts "#{i+1}. #{s.title}"
         end 
-
         #pulls 20 newest recent releases
         puts ""
     end
 
-    def action
-        puts "Grabbing info..."
-        puts ""
-        AnimeFan::Scraper.scrape_web
-        puts "Enter list to see shows."
+    def choose_anime
+        list 
+        puts "Please choose an anime show by number or type 'exit' to go to home page"
         input = gets.strip
-        list if input == "list" 
-     
-    end
-
-
-    def start
-        action
-        puts ""
-        puts "Enter exit to end the program."
-        input = gets.strip 
-        if input == "exit"
-            bye 
-        else
-            list
+        case input
+        when 'exit'
+            action
+        else                        #while !valid?(input.to_i)  2. redefine input inside of while loop/
+            if valid?(input.to_i)
+                #puts "FEAR"   #troubleshoot techniq !! to see if the method gets this far during runtime
+                show = get_show(input.to_i)
+                AnimeFan::Scraper.get_more_info(show) 
+                display_show(show)
+                choose_anime           #also last line of code so works
+            else 
+                puts "umm... that doesn't make sense"
+                choose_anime                                                #only because its the last line of code!
+            end 
         end
+    end 
 
-        
-    
+    def valid?(input)
+        return input.between?(1, AnimeFan::Show.all.size)
     end
+
+    def get_show(i)
+        return AnimeFan::Show.all[i-1]
+    end
+
+    def display_show(show)
+        puts show.description
+        puts show.title
+        puts show.episode
+        puts "press any key when done." #user experience
+        gets
+    end 
 
     def bye 
         puts "See you soon!"

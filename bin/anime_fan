@@ -5,10 +5,8 @@ require_relative '../lib/anime_fan'
 AnimeFan::CLI.new.call
 
 
-#give user the ability to type in the number and get the object associated with it. Error- if valid choice grab objcet, if not loop back around 
-".to_i - 1"
-
-
-
-
-#go to url
+#what i learned from Micah today!
+#loop do/while loop and cli structure (think about user experience/give them multiple times to input)
+#separation of concerns
+#CLI STRUCTURE (muy importante)
+#

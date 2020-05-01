@@ -5,9 +5,8 @@ require 'pry'
 
 class AnimeFan::Scraper 
 
-    url = "https://www18.gogoanime.io/"
-    html = open("https://www18.gogoanime.io/") 
-    doc = Nokogiri::HTML(html)
+    BASE_URL = "https://www18.gogoanime.io/"
+
 
     def self.scrape_web
         #create a pagination for the data scraped
@@ -34,6 +33,15 @@ class AnimeFan::Scraper
 
             page += 1
         end
+    end
+
+    def self.get_more_info(show)
+        show_html = Nokogiri::HTML(open(BASE_URL + show.url))
+        next_url = show_html.css("div.anime-info a")[0]["href"]
+        desc_page_html = Nokogiri::HTML(open(BASE_URL + next_url))
+        desc_p_tag = desc_page_html.css("p.type")[1].text
+        show.description = desc_p_tag
+
     end
  
     def self.list
