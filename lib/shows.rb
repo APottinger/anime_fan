@@ -21,10 +21,6 @@ class AnimeFan::Show
         save
     end
 
-    def create_by_title(ti)
-
-    end
-
     def initialize(title, episode, url)
         @title, @episode, @url = title, episode, url 
         save 

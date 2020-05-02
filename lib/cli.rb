@@ -11,7 +11,6 @@ class AnimeFan::CLI
         action
         sleep(1)
         choose_anime
-        bye 
     end
 
     def action
@@ -24,32 +23,21 @@ class AnimeFan::CLI
         puts ""
         puts ""
         AnimeFan::Scraper.scrape_web
-        loop do
+        loop do 
             puts "Enter 'list' to see shows:"
             input = gets.strip
             break if input == "list"  
         end 
-    end
 
-    def list
-        #lists anime
-        puts ""
-        puts "Recent Releases!"
-        puts ""
-        AnimeFan::Show.all.each.with_index do |s, i|
-            puts "#{i+1}. #{s.title}"
-        end 
-        #pulls 20 newest recent releases
-        puts ""
     end
 
     def choose_anime
         list 
-        puts "Please choose an anime show by number or type 'exit' to go to home page"
+        puts "Please choose an anime show by number or type 'exit' to go to close Anime Hub"
         input = gets.strip
         case input
         when 'exit'
-            action
+            bye
         else                        #while !valid?(input.to_i)  2. redefine input inside of while loop/
             if valid?(input.to_i)
                 #puts "FEAR"   #troubleshoot techniq !! to see if the method gets this far during runtime
@@ -62,6 +50,25 @@ class AnimeFan::CLI
                 choose_anime                                                #only because its the last line of code!
             end 
         end
+    end
+
+    def bye 
+        puts ""
+        puts ""
+        puts ""
+        puts "See you soon!"
+    end
+
+    def list
+        #lists anime
+        puts ""
+        puts "Recent Releases!"
+        puts ""
+        AnimeFan::Show.all.each.with_index do |s, i|
+            puts "#{i+1}. #{s.title}"
+        end 
+        #pulls 20 newest recent releases
+        puts ""
     end 
 
     def valid?(input)
@@ -74,19 +81,13 @@ class AnimeFan::CLI
 
     def display_show(show)
         puts show.description
+        puts ""
         puts show.title
         puts show.episode
         puts "press any key when done." #user experience
         gets
     end 
 
-    def bye 
-        puts "See you soon!"
-    end
-
-
-
-  
 
 end
 

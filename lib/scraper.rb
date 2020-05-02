@@ -43,31 +43,6 @@ class AnimeFan::Scraper
         show.description = desc_p_tag
 
     end
- 
-    def self.list
-        url = "https://www18.gogoanime.io/"
-        html = open("https://www18.gogoanime.io/") 
-        doc = Nokogiri::HTML(html)
-        print doc.css("p.name").text
-    end 
-
-    def self.find_by_title(title)
-        p_url = "https://www18.gogoanime.io"
-        p_html = open(p_url)
-        p_doc = Nokogiri::HTML(p_html)
-        title = p_doc.css("p.name").text
-        self.all.detect do |title|
-          anime[:title].downcase.strip == title.downcase.strip ||
-          anime[:title].split("(").first.strip.downcase == title.downcase.strip
-        end
-     
-      end
-
-        
-
-
-       
-
 
    
 end
