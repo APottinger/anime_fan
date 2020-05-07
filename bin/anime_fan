@@ -5,7 +5,6 @@ require_relative '../lib/anime_fan'
 AnimeFan::CLI.new.call
 
 
-#what i learned from Micah today!
 #loop do/while loop and cli structure (think about user experience/give them multiple times to input)
 #separation of concerns
 #CLI STRUCTURE (muy importante)

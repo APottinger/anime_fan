@@ -26,14 +26,15 @@ class AnimeFan::CLI
         loop do 
             puts "Enter 'list' to see shows:"
             input = gets.strip
-            break if input == "list"  
-        end 
+            break if input == "list" #I can build a search method or I can search in this method 
+        
+         end 
 
     end
 
     def choose_anime
         list 
-        puts "Please choose an anime show by number or type 'exit' to go to close Anime Hub"
+        puts "Please choose an anime show by number or search by name otherwise type 'exit' to go to close Anime Hub"
         input = gets.strip
         case input
         when 'exit'
@@ -45,12 +46,22 @@ class AnimeFan::CLI
                 AnimeFan::Scraper.get_more_info(show) 
                 display_show(show)
                 choose_anime           #also last line of code so works
-            else 
+            elsif input
+                show = AnimeFan::Show.find_by_title(input)
+                AnimeFan::Scraper.get_more_info(show) 
+                display_show(show)
+                choose_anime
+            else
                 puts "umm... that doesn't make sense"
                 choose_anime                                                #only because its the last line of code!
-            end 
+            end
         end
     end
+
+
+
+
+
 
     def bye 
         puts ""
