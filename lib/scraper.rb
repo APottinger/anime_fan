@@ -36,6 +36,7 @@ class AnimeFan::Scraper
     end
 
     def self.get_more_info(show)
+        puts "Search for more data for #{show.title}"
         show_html = Nokogiri::HTML(open(BASE_URL + show.url))
         next_url = show_html.css("div.anime-info a")[0]["href"]
         desc_page_html = Nokogiri::HTML(open(BASE_URL + next_url))

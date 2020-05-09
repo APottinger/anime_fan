@@ -22,6 +22,26 @@ class AnimeFan::CLI
         puts ""
         puts ""
         puts ""
+        list_loop
+    end
+
+    def choose_anime
+        list 
+        user_input 
+    end
+
+
+
+
+
+
+
+
+
+    
+    private
+
+    def list_loop
         AnimeFan::Scraper.scrape_web
         loop do 
             puts "Enter 'list' to see shows:"
@@ -29,11 +49,10 @@ class AnimeFan::CLI
             break if input == "list" #I can build a search method or I can search in this method 
         
          end 
-
     end
 
-    def choose_anime
-        list 
+
+    def user_input
         puts "Please choose an anime show by number or search by name otherwise type 'exit' to go to close Anime Hub"
         input = gets.strip
         case input
@@ -43,25 +62,35 @@ class AnimeFan::CLI
             if valid?(input.to_i)
                 #puts "FEAR"   #troubleshoot techniq !! to see if the method gets this far during runtime
                 show = get_show(input.to_i)
-                AnimeFan::Scraper.get_more_info(show) 
+                AnimeFan::Scraper.get_more_info(show) if !show.description 
                 display_show(show)
                 choose_anime           #also last line of code so works
             elsif input
                 show = AnimeFan::Show.find_by_title(input)
-                AnimeFan::Scraper.get_more_info(show) 
-                display_show(show)
+                if show == nil
+                    puts "Not Found"
+                else
+                    AnimeFan::Scraper.get_more_info(show) if !show.description
+                    display_show(show)
+                end 
                 choose_anime
             else
                 puts "umm... that doesn't make sense"
                 choose_anime                                                #only because its the last line of code!
             end
         end
+
     end
 
-
-
-
-
+    def list_loop
+        AnimeFan::Scraper.scrape_web
+        loop do 
+            puts "Enter 'list' to see shows:"
+            input = gets.strip
+            break if input == "list" #I can build a search method or I can search in this method 
+        
+         end 
+    end
 
     def bye 
         puts ""
