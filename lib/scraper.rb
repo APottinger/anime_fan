@@ -1,8 +1,3 @@
-require_relative "./anime_fan"
-require 'open-uri'
-require 'nokogiri'
-require 'pry'
-
 class AnimeFan::Scraper 
 
     BASE_URL = "https://www18.gogoanime.io/"

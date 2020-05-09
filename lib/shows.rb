@@ -1,6 +1,3 @@
-require_relative "./anime_fan"
-require_relative "../lib/concerns/findable"
-
 class AnimeFan::Show 
     extend Concerns::Findable
     include Concerns::Savable

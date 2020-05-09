@@ -1,6 +1,3 @@
-require_relative "./anime_fan"
-require 'pry'
-
 class AnimeFan::CLI  
     
     def call 
@@ -31,14 +28,6 @@ class AnimeFan::CLI
     end
 
 
-
-
-
-
-
-
-
-    
     private
 
     def list_loop
@@ -46,11 +35,9 @@ class AnimeFan::CLI
         loop do 
             puts "Enter 'list' to see shows:"
             input = gets.strip
-            break if input == "list" #I can build a search method or I can search in this method 
-        
+            break if input == "list" 
          end 
     end
-
 
     def user_input
         puts "Please choose an anime show by number or search by name otherwise type 'exit' to go to close Anime Hub"
@@ -58,13 +45,13 @@ class AnimeFan::CLI
         case input
         when 'exit'
             bye
-        else                        #while !valid?(input.to_i)  2. redefine input inside of while loop/
+        else                        
             if valid?(input.to_i)
-                #puts "FEAR"   #troubleshoot techniq !! to see if the method gets this far during runtime
+
                 show = get_show(input.to_i)
                 AnimeFan::Scraper.get_more_info(show) if !show.description 
                 display_show(show)
-                choose_anime           #also last line of code so works
+                choose_anime           
             elsif input
                 show = AnimeFan::Show.find_by_title(input)
                 if show == nil
@@ -76,10 +63,9 @@ class AnimeFan::CLI
                 choose_anime
             else
                 puts "umm... that doesn't make sense"
-                choose_anime                                                #only because its the last line of code!
+                choose_anime                                                
             end
         end
-
     end
 
     def list_loop
@@ -87,8 +73,7 @@ class AnimeFan::CLI
         loop do 
             puts "Enter 'list' to see shows:"
             input = gets.strip
-            break if input == "list" #I can build a search method or I can search in this method 
-        
+            break if input == "list" 
          end 
     end
 
@@ -127,8 +112,6 @@ class AnimeFan::CLI
         puts "press any key when done." #user experience
         gets
     end 
-
-
 end
 
 
